@@ -1,16 +1,66 @@
-# React + Vite
+# 3DPrint Ecommerce 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Estado](https://img.shields.io/badge/Estado-En%20Desarrollo-yellow)]()
+[![Licencia](https://img.shields.io/badge/Licencia-MIT-blue)]()
+[![Vite](https://img.shields.io/badge/Vite-7-green)]()
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📖 Sobre el proyecto
 
-## React Compiler
+**3DPrint** es una aplicación web de **e-commerce** desarrollada como **Proyecto Final de DAW**. 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Permite a los usuarios explorar un catálogo de productos relacionados con impresión 3D, añadirlos al carrito, gestionar su cuenta y simular el proceso de compra.
 
-## Expanding the ESLint configuration
+El objetivo del proyecto es aplicar los conocimientos adquiridos durante el ciclo formativo combinando un **frontend moderno con React** y un **backend en PHP + MySQL**.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🎨 Capturas de pantalla
+
+![Home](./screenshots/home.png)
+![Tienda](./screenshots/tienda.png)
+![Carrito](./screenshots/carrito.png)
+
+> Añadiré capturas reales según avance el proyecto.
+
+---
+
+## ⚙️ Tecnologías utilizadas
+
+- **Frontend:** React 19, Vite, React Router DOM, React Bootstrap, React Icons
+- **Backend:** PHP + MySQL (ver repositorio [3DPrint-Server](https://github.com/Deve-Lopez/3DPrint-Server))
+- **Estilos:** Bootstrap 5 + CSS personalizado
+
+---
+
+## 🛠️ Instalación y ejecución (Frontend)
+
+```bash
+git clone https://github.com/Deve-Lopez/ecommerce-3DPrint.git
+cd ecommerce-3DPrint
+
+npm install
+npm run dev
+
+La aplicación estará disponible en http://localhost:5173
+
+
+🧩 Estructura del proyecto
+textecommerce-3DPrint/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── App.jsx
+│   └── main.jsx
+├── public/
+├── package.json
+└── vite.config.js
+
+🚀 Funcionalidades principales
+
+Catálogo de productos
+Carrito de compras
+Navegación entre páginas
+Diseño responsive
+Preparado para integración con backend

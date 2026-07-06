@@ -1,0 +1,155 @@
+/**
+ * Register Styles 
+ * Estructura del formulario de creación de cuenta y gestión de nuevos usuarios.
+ */
+
+/* Layout raíz: Control de alineación central y espaciado de sección mediante Flexbox */
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.register-container h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-family: sans-serif;
+    letter-spacing: -0.5px;
+}
+
+/* ============================================================
+   CARD DEL FORMULARIO
+   ============================================================ */
+.register-form {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 550px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box; /* Asegura que el padding no afecte al ancho total */
+}
+
+/* Gestión de espaciado interno (Box-model) entre etiquetas e inputs */
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 6px;
+    align-self: flex-start;
+}
+
+/* Form Controls: Normalización de campos de texto y accesibilidad */
+.register-form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+/* Visual Feedback: Estado focus con color de acento corporativo (Cobre) */
+.register-form input:focus {
+    border-color: #A47764;
+    box-shadow: 0 0 5px rgba(164, 119, 100, 0.4);
+}
+
+/* ============================================================
+   ACTION TRIGGERS (BOTÓN DE ENVÍO)
+   ============================================================ */
+.register-button {
+    width: 65%; 
+    max-width: 250px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(145deg, #A47764, #C28C6C);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
+}
+
+/* Estados de interacción y feedback táctil para el usuario */
+.register-button:hover:not(:disabled) {
+    background: linear-gradient(145deg, #C28C6C, #A47764);
+    transform: translateY(-1px); /* Efecto de elevación sutil */
+    box-shadow: 0 4px 10px rgba(164, 119, 100, 0.3);
+}
+
+.register-button:active {
+    transform: translateY(0);
+}
+
+/* Estado deshabilitado: Útil durante el proceso de envío al servidor (fetch) */
+.register-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* ============================================================
+   SISTEMA DE MENSAJES (SERVER FEEDBACK)
+   ============================================================ */
+.message {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Estilo para registros exitosos (Verde semántico) */
+.message-success {
+    background-color: #e6f4ea;
+    color: #1e7e34;
+    border: 1px solid #c3e6cb;
+}
+
+/* Estilo para errores de validación o servidor (Rojo semántico) */
+.message-error {
+    background-color: #fdf2f2;
+    color: #9b1c1c;
+    border: 1px solid #f5c6cb;
+}
+
+/* Footer del Formulario: Navegación secundaria para usuarios ya registrados */
+.login-link-text {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #777;
+}
+
+.link-style {
+    color: #A47764;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.link-style:hover {
+    color: #C28C6C;
+    text-decoration: underline;
+}

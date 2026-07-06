@@ -1,0 +1,125 @@
+/**
+ * MisPedidos View Styles
+ * Visualización de historial de compras con diseño de tabla adaptativa.
+ */
+
+/* 1. Contenedor principal: Centrado y espaciado para lectura cómoda */
+.mis-pedidos-container {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 20px;
+    min-height: 70vh;
+}
+
+/* 2. Cabecera y Navegación de retorno */
+.pedidos-header {
+    margin-bottom: 40px;
+    border-bottom: 2px solid #F4F1EE;
+    padding-bottom: 20px;
+}
+
+.btn-volver {
+    background: none;
+    border: none;
+    color: #8D6E63;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.btn-volver:hover {
+    color: #4A332D;
+    text-decoration: underline;
+}
+
+/* 3. Estructura de la Tabla: Limpieza y elevación visual */
+.tabla-pedidos-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(74, 51, 45, 0.08);
+    overflow: hidden; 
+    border: 1px solid #E0D7D5;
+}
+
+.tabla-pedidos {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-pedidos th {
+    background-color: #FBF9F8;
+    color: #8D6E63;
+    padding: 18px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #F4F1EE;
+}
+
+.tabla-pedidos td {
+    padding: 18px;
+    color: #5D4037;
+    border-bottom: 1px solid #F4F1EE;
+}
+
+/* 4. BADGES DE ESTADO: Comunicación visual instantánea*/
+.estado-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.estado-badge.completado {
+    background-color: #E8F5E9;
+    color: #2E7D32; /* Verde: Éxito */
+}
+
+.estado-badge.pendiente {
+    background-color: #FFF3E0;
+    color: #E67E22; /* Naranja: En proceso */
+}
+
+.estado-badge.cancelado {
+    background-color: #FDEDEC;
+    color: #C0392B; /* Rojo: Error/Cancelación */
+}
+
+/* 5. Estado Vacío: UX para nuevos clientes */
+.no-pedidos-box {
+    text-align: center;
+    padding: 60px;
+    background-color: #FBF9F8;
+    border-radius: 12px;
+    border: 2px dashed #D7CCC8; /* Borde discontinuo para indicar área vacía */
+}
+
+/**
+ * RESPONSIVE: Técnica de "Data Labels"
+ * Convertimos la tabla en una lista de "Cards" en dispositivos móviles
+ * para evitar el scroll horizontal, mejorando la usabilidad táctil.
+ */
+@media (max-width: 768px) {
+    .tabla-pedidos thead { display: none; }
+    
+    .tabla-pedidos td {
+        display: block;
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Inyectamos el nombre de la columna mediante pseudoelementos */
+    .tabla-pedidos td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        font-weight: bold;
+        color: #8D6E63;
+    }
+}

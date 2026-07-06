@@ -1,0 +1,82 @@
+/**
+ * Contact Page Styles
+ * Layout de pantalla completa con división proporcional (1/3 info - 2/3 visual)
+ * Estilo orientado a la experiencia de usuario (UX) limpia y minimalista.
+ */
+
+/* Contenedor raíz: reseteo de márgenes para asegurar el full-bleed (sin bordes blancos) */
+.contact-page {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Estira los hijos para que ambos midan lo mismo de alto */
+    background-color: #fff;
+    min-height: 100vh; /* Ocupa el 100% de la altura de la ventana del navegador */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Wrapper principal: manejo de ancho total de viewport */
+.contact-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 100vw;
+    min-height: 100vh;
+    background-color: white;
+}
+
+/* Sección de contenido: ocupación del 33.3% del ancho (proporción 1 de 3) */
+.contact-info-section {
+    flex: 1; 
+    padding: 5% 4%; /* Spacing dinámico basado en el viewport para mejor adaptabilidad */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+}
+
+/* Sección visual: ocupación del 66.6% del ancho (proporción 2 de 3) */
+.contact-visual-section {
+    flex: 2; 
+    display: flex;
+    align-items: center;    
+    justify-content: center; 
+    background-color: #fcfcfc; 
+    overflow: hidden; /* Evita que imágenes grandes generen scroll horizontal */
+}
+
+/* Comportamiento de la imagen: 'contain' para preservar aspecto original sin recortar */
+.contact-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    display: block;
+}
+
+.contact-title {
+    color: #8D6E63; /* Tono marrón suave, coherente con una estética orgánica/3D */
+    font-size: 30px; 
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+/* Bloque inferior: detalles de contacto adicionales (email, tel, RRSS) */
+.other-contacts {
+    margin-top: 50px;
+    border-top: 1px solid #f0f0f0; /* Línea sutil de separación */
+    padding-top: 30px;
+}
+
+.contact-item {
+    margin-bottom: 20px;
+}
+
+/* Tipografía de etiquetas con estilo técnico e informativo */
+.contact-item .label {
+    display: block;
+    font-weight: 700;
+    color: #8D6E63;
+    text-transform: uppercase; /* Aporta un aire más formal y estructurado */
+    font-size: 0.75rem;
+    letter-spacing: 1px; /* Mejora la legibilidad en textos pequeños */
+}

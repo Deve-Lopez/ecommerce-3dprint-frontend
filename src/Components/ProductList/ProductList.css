@@ -1,0 +1,129 @@
+/**
+ * Shop Layout Styles - Edición 3DPrint
+ * Gestiona la estructura principal de la tienda, filtros y buscador.
+ */
+
+:root {
+  /* Paleta de colores principal mediante variables CSS */
+  --copper: #A47764;
+  --dark: #333333;
+  --gray: #666666;
+  --light-border: #e5e7eb;
+}
+
+/* Contenedor principal: Organiza Sidebar y Contenido mediante Flexbox */
+.shop-layout {
+  display: flex;
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Sidebar: Columna de filtros con ancho fijo */
+.sidebar { width: 240px; flex-shrink: 0; }
+.sidebar__title { font-size: 1.1rem; font-weight: 800; margin-bottom: 20px; color: var(--dark); text-transform: uppercase; }
+
+/* Grupo de filtros: Contenedor con estilo de tarjeta */
+.filter-group { padding: 20px; border: 1px solid var(--light-border); border-radius: 10px; background: #fff; }
+
+/* Opciones de filtro: Alineación de checkbox y texto */
+.filter-option { display: flex; align-items: center; margin-bottom: 10px; cursor: pointer; font-size: 0.9rem; }
+.filter-option input { margin-right: 10px; accent-color: var(--copper); }
+
+/* Área principal: Crece para ocupar el espacio restante */
+.main-content { flex: 1; min-width: 0; }
+
+/* SECCIÓN SUPERIOR: Título y Buscador alineados horizontalmente */
+.header-flex-container {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  width: 100%;
+  gap: 20px;
+}
+
+.content-header__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Wrapper del buscador: Posicionamiento relativo para contener el icono */
+.search-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 350px;
+  display: block !important; /* Asegura visualización correcta */
+}
+
+/* Campo de entrada: Estilo redondeado con espacio para el icono a la izquierda */
+.search-input-field {
+  width: 100% !important;
+  padding: 12px 15px 12px 40px !important;
+  border: 2px solid var(--light-border) !important;
+  border-radius: 30px !important;
+  background: #ffffff !important;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+/* Estado de foco: Cambia el color del borde al color corporativo */
+.search-input-field:focus {
+  border-color: var(--copper) !important;
+}
+
+/* Icono de búsqueda: Posicionado de forma absoluta dentro del input */
+.search-icon-inside {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--copper);
+  font-size: 16px;
+  z-index: 5;
+}
+
+/* Barra de ordenación: Alinea el selector a la derecha */
+.sort-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--light-border);
+  margin-bottom: 30px;
+  font-size: 0.85rem;
+}
+
+.sort-bar select { margin-left: 10px; padding: 5px; border-radius: 5px; }
+
+/* Cuadrícula de productos: Responsiva mediante CSS Grid */
+.product-grid {
+  display: grid;
+  /* Crea columnas automáticamente de mínimo 240px */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+/* Mensaje de error/vacío: Ocupa todo el ancho del grid */
+.no-products { grid-column: 1/-1; text-align: center; padding: 50px; background: #f9f9f9; border-radius: 10px; color: #888; }
+
+/* Paginación: Controles centrados al final del listado */
+.pagination { display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 50px; }
+.pagination button { padding: 8px 16px; border: 1px solid var(--light-border); background: white; cursor: pointer; border-radius: 5px; }
+
+/* Hover en paginación: Feedback visual con el color de la marca */
+.pagination button:hover:not(:disabled) { background: var(--copper); color: white; }
+
+/* RESPONSIVE: Adaptación para dispositivos móviles y tablets */
+@media (max-width: 850px) {
+  /* Cambia el flujo de horizontal a vertical */
+  .shop-layout { flex-direction: column; }
+  .header-flex-container { flex-direction: column; align-items: flex-start; }
+  /* El buscador ocupa todo el ancho disponible en móviles */
+  .search-wrapper { max-width: 100%; }
+}

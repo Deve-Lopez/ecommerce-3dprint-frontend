@@ -1,0 +1,133 @@
+/**
+ * Navbar Styles
+ * Estructura del Header global y gestión de componentes de navegación.
+ */
+
+/* Layout raíz: Flex-box para distribución espacial en el eje X */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;    
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    position: sticky; 
+    top: 0;
+    z-index: 1000; /* Asegura que el menú flote por encima de las cards de productos */
+}
+
+/* ============================================================
+   BRANDING (LOGO)
+   Reset de botones para comportamiento de enlace semántico
+   ============================================================ */
+.logo-link {
+    all: unset;              
+    cursor: pointer;         
+    display: inline-block;   
+}
+
+/* Accesibilidad (A11y): Indicador visual para navegación por teclado (Tab) */
+.logo-link:focus-visible {
+    outline: 2px solid #A47764;
+    outline-offset: 4px;
+}
+
+.logo {
+    font-size: 36px;
+    font-weight: bold;
+    color: #A47764; /* Color corporativo de 3DPrint */
+}
+
+.logo span {
+    color: #000;
+}
+
+/* ============================================================
+   HUB DE ACCIONES (ICONOS)
+   Gestión de interactividad y estados de usuario
+   ============================================================ */
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; 
+}
+
+/* Abstracción de estilos para elementos accionables */
+.search-button,
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333; 
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Sincronización de color en cascada (Inherit) para hover */
+.search-button:hover,
+.icon-button:hover,
+.icon-button:hover .login-link,
+.icon-button:hover .cart-text {
+    color: #A47764;
+}
+
+/* Tipografía informativa vinculada a iconos */
+.login-link,
+.cart-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: inherit; 
+}
+
+/* ============================================================
+   CARRITO DE COMPRAS
+   Gestión de estados numéricos y micro-copy
+   ============================================================ */
+.cart-icon {
+    position: relative; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Badge dinámico: Control de stacking (Z-index implícito) y posicionamiento absoluto */
+.counter {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #A47764;
+}
+
+/* Desglose informativo del carrito (Texto y Precio) */
+.cart-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    text-align: left;
+}
+
+/** * Responsive Design
+ * Optimización de elementos de navegación para tablets y móviles. */
+@media (max-width: 768px) {
+    .login-link, .cart-text span:first-child {
+        display: none; 
+    }
+    
+    .logo {
+        font-size: 28px;
+    }
+}

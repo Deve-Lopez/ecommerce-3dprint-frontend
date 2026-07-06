@@ -1,0 +1,48 @@
+/**
+ * Global Styles & Reset
+ * Configuración base del proyecto, tipografía y normalización del DOM.
+ */
+
+/* Importación del Sistema Tipográfico: Poppins (Sans-serif) para una estética moderna y limpia */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* ============================================================
+   RESET & BOX-MODEL
+   ============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+
+
+/* ============================================================
+   ESTILOS DE CUERPO (BODY)
+   Configuración del Viewport y Layout principal de la tienda.
+   ============================================================ */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #fff;
+    /* margin: 0 auto combinado con max-width centra la tienda en monitores grandes */
+    margin: 0 auto;
+    
+    /* Max-width Sincronizado: Limita el ancho del catálogo para evitar líneas de texto demasiado largas */
+    max-width: 1200px;
+    
+    /* Suavizado de fuentes (Font Smoothing): Mejora la legibilidad en sistemas macOS y Windows */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #333;
+}
+
+/* Selección de texto: Personalización de la interfaz (UI) con el color de marca (Cobre) */
+::selection {
+    background-color: #A47764; 
+    color: #fff;
+}
+
+/* Control de Scroll: Suavizado de la navegación cuando se usan anclas internas */
+html {
+    scroll-behavior: smooth;
+}

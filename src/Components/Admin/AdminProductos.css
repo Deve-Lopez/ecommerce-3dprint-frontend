@@ -1,0 +1,268 @@
+/**
+ * AdminProductos.css - Gestión de Inventario 3DPrint
+ * Estilos enfocados a la usabilidad del catálogo y edición de productos.
+ */
+
+/* Contenedor Principal: Centramos la vista y damos aire a los bordes */
+.admin-clientes-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Barra de herramientas: Alineamos buscador y botón de añadir en la misma línea */
+.admin-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+/* Buscador: Diseño relativo para meter el icono de la lupa sin que pise el texto */
+.search-box {
+    position: relative;
+    flex: 1;
+    max-width: 450px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 0.95rem;
+    transition: border-color 0.3s;
+}
+
+/* Feedback visual al hacer foco en la búsqueda */
+.search-box input:focus {
+    outline: none;
+    border-color: #A47764; /* Color corporativo madera/bronce */
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #A47764;
+}
+
+/* Botones Principales: Estilo destacado para acciones importantes (Añadir Producto) */
+.btn-add-product {
+    background-color: #A47764;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-add-product:hover {
+    background-color: #8b6252;
+    transform: translateY(-2px); /* Efecto de elevación al pasar el mouse */
+}
+
+/* Tabla de Inventario: Estilo limpio para facilitar la lectura de stock */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden; /* Cortamos esquinas para respetar el border-radius */
+}
+
+.admin-table th {
+    background: #A47764;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.admin-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+/* Miniatura del producto: Para identificar el artículo rápidamente */
+.admin-prod-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover; /* Evita que la imagen se deforme si no es cuadrada */
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+/* Badges de Estado: Etiquetas de color para avisar si queda poco stock */
+.stock-badge {
+    padding: 5px 10px;
+    background: #e8f5e9; /* Verde suave para stock suficiente */
+    color: #2e7d32;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.stock-badge.low {
+    background: #ffebee; /* Rojo suave para avisar de poco stock */
+    color: #c62828;
+}
+
+/* Indicadores de visibilidad del producto */
+.status-on { color: #2e7d32; font-size: 0.75rem; font-weight: bold; }
+.status-off { color: #9e9e9e; font-size: 0.75rem; font-weight: bold; }
+
+/* =========================================
+   SISTEMA DE MODAL CON SCROLL INTERNO
+   ========================================= */
+
+/* Fondo oscuro desenfocado detrás del modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+/* Caja del modal: Usamos Flexbox para fijar Header/Footer y dejar el centro con scroll */
+.modal-content.modal-large {
+    background: white;
+    width: 100%;
+    max-width: 850px;
+    max-height: 90vh; /* Para que no se coma toda la pantalla en alto */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+
+/* Cabecera del modal: Siempre visible al hacer scroll */
+.modal-header {
+    padding: 20px 30px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #A47764;
+    font-size: 1.4rem;
+}
+
+/* Cuerpo del Formulario: Aquí activamos el scroll si los campos exceden el alto */
+.admin-form {
+    padding: 30px;
+    overflow-y: auto; 
+    flex: 1; /* Esto hace que el formulario ocupe todo el espacio central disponible */
+    background: #fff;
+}
+
+/* Footer del modal: Botones de Guardar/Cancelar siempre a mano abajo */
+.modal-actions {
+    padding: 20px 30px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    background: #f9f9f9;
+}
+
+/* Estructura del Formulario: Agrupamos campos para que no parezca un caos */
+.form-section {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.form-section h4 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Filas con Grid/Flex para poner inputs en paralelo (ej: Precio y Stock) */
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.input-group label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #A47764;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-group input, 
+.input-group select, 
+.input-group textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.input-group textarea {
+    resize: vertical; /* Permitimos agrandar el área de descripción a lo largo */
+    min-height: 80px;
+}
+
+/* Estilo de botones dentro del modal */
+.btn-cancel {
+    background: #e0e0e0;
+    color: #666;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-save {
+    background: #A47764;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-save:hover { background: #8b6252; }
+
+/* Responsive: En móviles los inputs de las filas se apilan verticalmente */
+@media (max-width: 600px) {
+    .form-row { flex-direction: column; }
+    /* El modal en móvil ocupa toda la pantalla para que sea más fácil escribir */
+    .modal-content.modal-large { height: 100%; max-height: 100vh; border-radius: 0; }
+}

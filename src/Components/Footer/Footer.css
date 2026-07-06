@@ -1,0 +1,136 @@
+/**
+ * Footer Component Styles
+ * Estructura de tres columnas diseñada para cerrar la jerarquía visual de la web.
+ */
+
+/* Contenedor principal del footer */
+footer {
+    background-color: #ffffff; /* Fondo blanco puro para mantener la limpieza visual */
+    color: #4A332D; /* Marrón oscuro para el texto base, asegurando legibilidad */
+    padding: 3rem 1rem;
+    margin-top: auto; /* Truco de Flexbox: empuja el footer al final si hay poco contenido */
+    border-top: 1px solid #D7CCC8; /* Línea divisoria sutil que conecta con la paleta corporativa */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap; /* Permite que las columnas bajen en pantallas medianas */
+    justify-content: space-between;
+    gap: 2.5rem;
+}
+
+/* Columnas: Definición de anchos mínimos para disparar el wrap correctamente */
+.columna-uno, .columna-dos, .columna-tres {
+    flex: 1;
+    min-width: 250px;
+}
+
+/* SECCIÓN 1: Contacto y Enlaces (Izquierda) */
+.columna-uno {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.columna-uno a {
+    color: #5D4037; /* Marrón medio para enlaces secundarios */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Micro-interacción: Pequeño desplazamiento a la derecha para indicar interactividad */
+.columna-uno a:hover {
+    color: #8D6E63; 
+    padding-left: 5px; 
+}
+
+.icono {
+    font-size: 1.3rem;
+    color: black; 
+}
+
+/* SECCIÓN 2: Branding y Filosofía (Centro) */
+.columna-dos {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-link {
+    text-decoration: none;
+}
+
+/* Logotipo textual con variaciones de peso y color */
+.logo {
+    font-size: 2.2rem;
+    color: #4A332D; 
+    margin-bottom: 0.8rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo span {
+    color: #8D6E63; /* Color de acento para la marca (PRINT) */
+    font-weight: 800;
+}
+
+.texto {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #6D4C41; 
+    max-width: 400px;
+}
+
+/* SECCIÓN 3: Call to Action - Acción de Soporte (Derecha) */
+.columna-tres {
+    display: flex;
+    justify-content: flex-end; /* Alinea el botón al borde derecho */
+    align-items: center;
+}
+
+/* Botón 'Ghost' (con borde) que se rellena al hacer hover */
+.contacto-boton {
+    background-color: transparent;
+    color: #5D4037;
+    border: 2px solid #5D4037; 
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.contacto-boton:hover {
+    background-color: #5D4037; 
+    color: #ffffff; 
+}
+
+/**
+ * RESPONSIVE DESIGN
+ * Adaptación para móviles: Centrado total y disposición vertical.
+ */
+@media (max-width: 850px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .columna-uno {
+        align-items: center; /* Centra los iconos de contacto en móvil */
+    }
+
+    .columna-tres {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+}

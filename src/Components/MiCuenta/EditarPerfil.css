@@ -1,0 +1,92 @@
+/**
+ * Edit Profile Styles
+ * Layout optimizado para formularios de datos personales y de envío.
+ */
+
+/* Contenedor raíz: Centrado y fondo neutro para resaltar la 'Card' */
+.editar-perfil-container {
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: #FBF9F8; /* Tono crema muy sutil para descanso visual */
+    min-height: 90vh;
+}
+
+/* Card: Diseño elevado con sombras suaves basadas en el color corporativo */
+.editar-perfil-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(74, 51, 45, 0.1); /* Sombra con tinte marrón */
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Botón de retorno: Navegación simple sin ruido visual */
+.btn-back {
+    background: none;
+    border: none;
+    color: #8D6E63;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/**
+ * FORM GRID
+ * Implementación de Grid de 2 columnas para optimizar el espacio.
+ */
+.edit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Agrupación de etiquetas e inputs */
+.input-box { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 5px; 
+}
+
+/* Modificador para campos de ancho completo (ej: Dirección) */
+.input-box.full { 
+    grid-column: span 2; /* Ocupa las dos columnas del grid */
+}
+
+.input-box label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #4A332D;
+}
+
+.input-box input {
+    padding: 10px;
+    border: 1px solid #D7CCC8;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-box input:focus {
+    border-color: #4A332D;
+}
+
+/* Acción principal: Botón sólido de alta jerarquía */
+.btn-save-perfil {
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #4A332D;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-save-perfil:hover {
+    opacity: 0.9;
+}

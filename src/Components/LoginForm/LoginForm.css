@@ -1,0 +1,81 @@
+/**
+ * Login Form Styles
+ * Interfaz de autenticación con diseño coherente al módulo de registro.
+ * Se utiliza una estética de "Card" para separar visualmente el formulario del fondo.
+ */
+
+/* Card principal: Alineación con el ancho estándar del sitio (550px) */
+.login-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 550px; /* Consistencia visual para evitar saltos de layout entre vistas */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box; /* Asegura que el padding no afecte al ancho total */
+}
+
+/* Gestión de espaciado interno del box-model para los contenedores de inputs */
+.login-form div {
+    margin-bottom: 12px;
+    width: 100%; 
+}
+
+/* Inputs de autenticación: Normalización de padding y bordes */
+.login-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: all 0.3s ease; /* Transición suave para el cambio de color de borde */
+}
+
+/* Visual feedback en estado focus (Primary Brand Color: Marrón Tierra) */
+.login-form input:focus {
+    border-color: #A47764;
+    box-shadow: 0 0 5px rgba(164, 119, 100, 0.4);
+}
+
+/* ============================================================
+   ACTION TRIGGERS (BOTONES)
+   Botones con gradiente dinámico y control de ancho para jerarquía visual
+   ============================================================ */
+.login-button,
+.button-registro {
+    width: 65%;          /* Ancho contenido para no saturar visualmente el eje horizontal */
+    max-width: 250px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    /* Gradiente sutil que aporta profundidad y un look más moderno/premium */
+    background: linear-gradient(145deg, #A47764, #C28C6C);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 15px 0 0 0;
+    transition: all 0.3s ease;
+}
+
+/* Estados de interacción para los botones principales (Hover y Click) */
+.login-button:hover,
+.button-registro:hover {
+    /* Invertimos el gradiente en hover para dar feedback de "presionable" */
+    background: linear-gradient(145deg, #C28C6C, #A47764);
+    transform: translateY(-1px); /* Efecto de elevación */
+    box-shadow: 0 4px 10px rgba(164, 119, 100, 0.3);
+}
+
+.login-button:active,
+.button-registro:active {
+    transform: translateY(0); /* Vuelve a su posición original al pulsar */
+}

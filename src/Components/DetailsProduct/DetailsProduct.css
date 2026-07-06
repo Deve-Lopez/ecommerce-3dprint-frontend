@@ -1,0 +1,187 @@
+/**
+ * Product Details Page Styles
+ * Layout avanzado utilizando CSS Grid para la estructura y Flexbox para componentes.
+ */
+
+/* Contenedor principal: Diseño en dos columnas (Imagen vs Información) */
+.product-details {
+    display: grid;
+    /* Proporción 55/45 para dar más peso visual a la imagen del producto */
+    grid-template-columns: 55% 45%; 
+    gap: 60px; 
+    max-width: 1280px;
+    margin: 50px auto;
+    padding: 0 40px;
+    background-color: #ffffff;
+    border-radius: 12px;
+}
+
+/* Imagen principal: Uso de aspect-ratio implícito y control de encuadre */
+.product-details .image-principal { 
+    width: 100%;
+    min-height: 500px;
+    height: auto; 
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    /* 'cover' asegura que la imagen llene el contenedor sin deformarse */
+    object-fit: cover;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+/* Columna de información: Layout vertical flexible */
+.product-infos {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 5px;
+}
+
+.product-id {
+    font-size: 0.95rem;
+    color: #6b7280; /* Gris suave para información secundaria (metadatos) */
+    margin-bottom: 8px;
+}
+
+/* Precio: Destacado con el color corporativo #56453F */
+.price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #56453F; 
+    margin: 20px 0 30px 0;
+    border-top: 1px solid #d1d5db;
+    padding-top: 15px;
+}
+
+.descripcion {
+    font-size: 1rem;
+    color: #333333;
+    line-height: 1.7; /* Interlineado optimizado para lectura larga */
+    margin-bottom: 40px;
+}
+
+/**
+ * ESTADOS DE STOCK
+ * Feedback visual mediante código de colores semánticos (Semáforo de disponibilidad)
+ */
+.stock-alert-details {
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.status-in-stock { color: #16a34a; }   /* Verde: Disponible */
+.status-low-stock { color: #B00100; }  /* Rojo: Urgencia de compra */
+.status-no-stock {
+    color: #F0F0E5; 
+    padding: 0.5rem 1rem;
+    background-color: #56453F; /* Invertido para resaltar agotado */
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/**
+ * SELECTOR DE CANTIDAD Y COMPRA
+ * La sección más interactiva: usa Flexbox para alinear controles y botón.
+ */
+.quantity-and-add {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Selector numérico con diseño industrial/limpio */
+.quantity-selector-details {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    overflow: hidden;
+    height: 50px;
+    background-color: #f9fafb;
+}
+
+.btn-quantity-details {
+    background-color: #f3f4f6;
+    border: none;
+    width: 50px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #333333;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-quantity-details:hover:not(:disabled) {
+    background-color: #e5e7eb;
+}
+
+/* Bloqueo visual cuando no se puede aumentar/disminuir más */
+.btn-quantity-details:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.quantity-display-details {
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    background-color: white;
+    border-left: 1px solid #d1d5db;
+    border-right: 1px solid #d1d5db;
+}
+
+/* Botón Añadir al Carrito: CTA (Call to Action) principal */
+.add-to-cart-details {
+    background-color: #56453F; 
+    color: white;
+    padding: 0 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    height: 50px;
+    flex-grow: 1; /* El botón ocupa todo el espacio restante */
+    transition: all 0.2s ease;
+}
+
+.add-to-cart-details:hover:not(:disabled) {
+    background-color: #443632;
+    transform: translateY(-1px); /* Micro-interacción de elevación */
+}
+
+.add-to-cart-details.disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+/**
+ * RESPONSIVE DESIGN (Media Queries)
+ * Reestructuración de Grid a una sola columna para tablets y móviles.
+ */
+@media (max-width: 950px) {
+    .product-details {
+        grid-template-columns: 1fr; /* Apilado vertical */
+        padding: 20px;
+    }
+    .product-details .image-principal {
+        min-height: 300px;
+    }
+    .quantity-and-add {
+        flex-direction: column; /* Controles apilados para facilitar el toque (Touch Friendly) */
+    }
+    .quantity-selector-details, .add-to-cart-details {
+        width: 100%; /* Botones de ancho completo en móvil */
+    }
+}

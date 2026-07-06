@@ -1,0 +1,280 @@
+/* ============================================================
+   CONTENEDOR PRINCIPAL Y LAYOUT (ESTRUCTURA)
+   ============================================================ */
+.carrito-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    min-height: 80vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Cabecera: Usamos Flexbox para separar el título del botón de vaciar */
+.carrito-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+.carrito-header h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin: 0;
+}
+
+/* Botón secundario para limpiar el carrito (color rojo de aviso) */
+.btn-limpiar {
+    background: transparent;
+    border: 1px solid #ff4d4d;
+    color: #ff4d4d;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-limpiar:hover {
+    background: #ff4d4d;
+    color: white;
+}
+
+/* Layout principal: 2 columnas (Productos | Resumen de pago) 
+   Usamos CSS Grid para un control preciso de los anchos.
+*/
+.carrito-layout {
+    display: grid;
+    grid-template-columns: 1fr 350px; /* La derecha es fija, la izquierda fluye */
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* ============================================================
+   TARJETAS DE PRODUCTO (COLUMNA IZQUIERDA)
+   ============================================================ */
+.carrito-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.carrito-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    position: relative;
+    gap: 20px;
+}
+
+/* Ajuste de imagen para que siempre mantenga proporción */
+.card-img img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.card-info {
+    flex: 1; /* Ocupa todo el espacio sobrante entre la foto y los controles */
+}
+
+.card-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+    color: #222;
+}
+
+.sku {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+/* Controles de cantidad: Botones + y - */
+.card-controles {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.selector-cantidad {
+    display: flex;
+    align-items: center;
+    background: #f1f1f1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.selector-cantidad button {
+    border: none;
+    background: #e0e0e0;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.selector-cantidad button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5; /* Feedback visual para stock insuficiente o mínimo */
+}
+
+.cantidad-num {
+    padding: 0 15px;
+    font-weight: 600;
+}
+
+/* Subtotal por item: Alineado a la derecha para facilitar la suma visual */
+.subtotal-item {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    min-width: 80px;
+    text-align: right;
+}
+
+/* Botón flotante para eliminar un producto individual */
+.btn-remove {
+    background: #fff0f0;
+    border: none;
+    color: #ff4d4d;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* ============================================================
+   RESUMEN DE PAGO (COLUMNA DERECHA)
+   ============================================================ */
+.carrito-resumen {
+    position: sticky; /* Se queda pegado arriba mientras haces scroll en los productos */
+    top: 20px;
+}
+
+.resumen-card {
+    background: #fdfdfd;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #eee;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+.resumen-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #333;
+}
+
+/* El botón de acción principal (Finalizar/Pagar) */
+.btn-checkout {
+    width: 100%;
+    margin-top: 25px;
+    padding: 18px;
+    background: #2ecc71; /* Verde éxito */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-checkout:hover {
+    background: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+}
+
+/* ============================================================
+   PASOS DEL CHECKOUT (ENVÍO Y PAGO)
+   ============================================================ */
+
+/* Estilo para los inputs de envío */
+.campo-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.campo-group input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* Tarjeta de confirmación del paso 3: usamos un borde lateral para destacar los datos */
+.datos-confirmacion-card {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #2ecc71;
+    margin-bottom: 20px;
+}
+
+/* ============================================================
+   PANTALLA DE ÉXITO (FINALIZACIÓN)
+   ============================================================ */
+.success-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 500px;
+}
+
+.success-icon-circle {
+    font-size: 3rem;
+    background: #e8f8f0;
+    color: #2ecc71;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+}
+
+/* ============================================================
+   MEDIA QUERIES (RESPONSIVIDAD)
+   ============================================================ */
+
+/* En tablets, pasamos a una sola columna */
+@media (max-width: 992px) {
+    .carrito-layout {
+        grid-template-columns: 1fr;
+    }
+    .carrito-resumen {
+        position: static;
+    }
+}
+
+/* En móviles, apilamos la información de cada producto verticalmente */
+@media (max-width: 600px) {
+    .carrito-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .card-controles {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .subtotal-item {
+        text-align: center;
+    }
+}

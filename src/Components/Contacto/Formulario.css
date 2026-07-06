@@ -1,0 +1,157 @@
+/**
+ * Formulario Styles
+ * UI para la gestión de inputs con paleta Marrón Corporativa.
+ * Enfocado en la legibilidad, estados de interacción y feedback de usuario.
+ */
+
+/* Contenedor principal: Estructura el ancho máximo para no perder legibilidad en pantallas grandes */
+.contacto-container {
+    width: 100%;
+    max-width: 550px; 
+    margin: 40px auto; /* Centrado automático para layouts de una sola columna */
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+.form-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Manejo de spacing: Espaciado consistente entre campos para evitar la fatiga visual */
+.form-group {
+    margin-bottom: 24px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tipografía de etiquetas: Uso de 'caps' y letter-spacing para un look de interfaz moderna */
+.form-group label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #4A332D; /* Marrón oscuro: alto contraste para accesibilidad */
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* Campos de entrada: Diseño minimalista con bordes definidos */
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid #D7CCC8; /* Color tierra suave para el estado reposo */
+    border-radius: 6px;
+    outline: none;
+    font-size: 15px;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: all 0.3s ease; /* Suaviza la transición de colores al hacer foco */
+    font-family: inherit;
+    color: #4A332D;
+}
+
+.form-group textarea {
+    resize: vertical; /* Permite al usuario ampliar el área de mensaje sin romper el ancho del layout */
+    min-height: 150px;
+    line-height: 1.6;
+}
+
+/**
+ * ESTADOS DE INTERACCIÓN (UX)
+ * Feedback visual mediante el color destacado #8D6E63 y un suave halo (box-shadow)
+ */
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: #8D6E63; 
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(141, 110, 99, 0.1); 
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #A1887F; /* Contraste reducido para el texto de ejemplo */
+    font-size: 14px;
+}
+
+/* Botón de Enviar: CTA (Call to Action) con jerarquía visual clara */
+.boton-enviar {
+    width: 100%;
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #5D4037; 
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Efectos de Hover: Micro-interacciones para indicar que el elemento es clickeable */
+.boton-enviar:hover:not(:disabled) {
+    background-color: #4A332D; 
+    transform: translateY(-1px); /* Efecto de elevación */
+    box-shadow: 0 4px 12px rgba(74, 51, 45, 0.2);
+}
+
+.boton-enviar:active {
+    transform: translateY(0); /* Efecto de pulsación */
+}
+
+/* Estado Deshabilitado: Previene el envío múltiple durante la petición asíncrona (fetch) */
+.boton-enviar:disabled {
+    background: #D7CCC8;
+    color: #fff;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/**
+ * ALERTAS DE FEEDBACK
+ * Colores semánticos adaptados a la paleta cálida (Verde bosque y Rojo arcilla)
+ */
+.mensaje-feedback {
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    animation: fadeIn 0.4s ease forwards; /* Entrada suave para mejorar la percepción del usuario */
+}
+
+.mensaje-success {
+    color: #2E4C2E; 
+    background-color: #E8F5E9;
+    border: 1px solid #C8E6C9;
+}
+
+.mensaje-error {
+    color: #5D2E2E; 
+    background-color: #FFEBEE;
+    border: 1px solid #FFCDD2;
+}
+
+/* Animación de entrada para los mensajes de respuesta del servidor */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ajustes para dispositivos móviles (Responsividad) */
+@media (max-width: 768px) {
+    .contacto-container {
+        padding: 0 20px;
+    }
+    
+    .boton-enviar {
+        padding: 15px;
+        font-size: 14px;
+    }
+}

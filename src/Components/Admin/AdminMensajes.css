@@ -1,0 +1,55 @@
+/* ============================================================
+   AJUSTES ESPECÍFICOS PARA LA GESTIÓN DE MENSAJES
+   ============================================================ */
+
+/* Reutilizamos la estructura de AdminClientes.css para mantener la coherencia 
+   visual en todo el panel de administración (colores, tablas y espaciados).
+*/
+
+/* Ajuste para la previsualización del mensaje: 
+   Le damos más ancho que a las direcciones de clientes para que el 
+   administrador pueda leer el inicio de la consulta sin abrir el modal.
+*/
+.txt-sub-truncate {
+    max-width: 250px; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Añade los "..." si el texto es muy largo */
+    font-style: italic; /* Lo ponemos en cursiva para diferenciarlo de datos fijos */
+}
+
+/* Estilo para el "Tag" del asunto:
+   Usamos un tono arena suave con un borde sutil para que destaque 
+   el tema de la consulta dentro de la fila.
+*/
+.role-tag {
+    background: #F4F1EE;
+    color: #8D6E63;
+    border: 1px solid #D7CCC8;
+}
+
+/* Estilo para el botón de respuesta (enlace mailto):
+   Como técnicamente es una etiqueta <a> pero queremos que parezca un botón,
+   usamos Flexbox para centrar el icono del sobre y el texto "Responder".
+*/
+.btn-save {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* Quitamos el subrayado típico de los enlaces */
+    gap: 8px; /* Espacio entre el emoji 📧 y el texto */
+}
+
+/* Contenedor para el cuerpo del mensaje dentro del modal:
+   Aplicamos un diseño de "bloque de texto" con un fondo claro para
+   mejorar la legibilidad de las consultas largas.
+*/
+.mensaje-texto-box {
+    padding: 15px;
+    background: #FBF9F8;
+    border: 1px solid #D7CCC8;
+    border-radius: 8px;
+    line-height: 1.6;
+    color: #4A332D;
+    white-space: pre-line; /* Respeta los saltos de línea escritos por el usuario */
+}

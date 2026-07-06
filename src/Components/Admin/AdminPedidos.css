@@ -1,0 +1,68 @@
+/* ============================================================
+   ESTILOS PARA EL SELECTOR DE ESTADOS (PEDIDOS)
+   ============================================================ */
+
+/* Estilo base del elemento <select> para que sea más atractivo que el por defecto del navegador */
+.select-estado {
+    padding: 8px;
+    border-radius: 6px;
+    font-weight: 600; /* Texto en negrita para que el estado sea legible de un vistazo */
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: all 0.2s ease;
+}
+
+/* COLORES SEMÁNTICOS SEGÚN EL ESTADO:
+   Aquí aplicamos diferentes colores de fondo y texto dependiendo de la clase 
+   que le pasemos desde React (según el valor en la base de datos).
+*/
+
+/* Estado Pendiente: Tonos amarillos/naranja (Alerta suave) */
+.select-estado.pendiente { 
+    background: #fff3cd; 
+    color: #856404; 
+    border-color: #ffeeba;
+}
+
+/* Estado Enviado: Tonos azules (Información en proceso) */
+.select-estado.enviado { 
+    background: #d1ecf1; 
+    color: #0c5460; 
+    border-color: #bee5eb;
+}
+
+/* Estado Completado: Tonos verdes (Éxito/Finalizado) */
+.select-estado.completado { 
+    background: #d4edda; 
+    color: #155724; 
+    border-color: #c3e6cb;
+}
+
+/* Estado Cancelado: Tonos rojos (Error o acción irreversible) */
+.select-estado.cancelado { 
+    background: #f8d7da; 
+    color: #721c24; 
+    border-color: #f5c6cb;
+}
+
+/* ============================================================
+   DETALLE DE PRODUCTOS DENTRO DE LA TABLA
+   ============================================================ */
+
+/* Contenedor del resumen de productos comprados en un pedido */
+.productos-resumen { 
+    font-size: 0.85rem; 
+    color: #555; 
+    line-height: 1.4;
+}
+
+/* Estilo para cada línea de producto (nombre x cantidad) */
+.prod-linea { 
+    border-bottom: 1px solid #f0f0f0; /* Separador sutil entre artículos del mismo pedido */
+    padding: 2px 0; 
+}
+
+/* Eliminamos el borde en el último producto de la lista para limpiar el diseño */
+.prod-linea:last-child {
+    border-bottom: none;
+}

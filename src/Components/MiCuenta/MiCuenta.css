@@ -1,0 +1,153 @@
+/**
+ * MiCuenta View Styles - Edición 3DPrint
+ * Ficha de usuario y panel de administración con jerarquía visual coherente.
+ */
+
+/* 1. Contenedor raíz: Estructura de página completa */
+.micuenta-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 60px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+/* 2. Estilo de Tarjetas: Abstracción de diseño para Perfil y Admin */
+.perfil-card, 
+.admin-theme {
+    background: #ffffff;
+    width: 100%;
+    max-width: 550px; /* Alineado con los formularios de Login/Register */
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid #E0D7D5;
+    box-shadow: 0 10px 30px rgba(74, 51, 45, 0.05); 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.perfil-card h2, 
+.admin-theme h2 {
+    margin: 0;
+    color: #4A332D;
+    font-size: 1.8rem;
+    text-align: center;
+    border-bottom: 2px solid #F4F1EE;
+    padding-bottom: 15px;
+}
+
+/* 3. Menús en Grid: Organización de accesos directos */
+.menu-opciones, 
+.menu-admin {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Distribución en 2 columnas */
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.menu-item, 
+.menu-admin a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: #fff;
+    border: 1.5px solid #8D6E63;
+    border-radius: 8px;
+    color: #5D4037;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Feedback visual de interactividad (Hover) */
+.menu-item:hover, 
+.menu-admin a:hover {
+    background: #8D6E63;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(141, 110, 99, 0.2);
+}
+
+/* 4. Bloque de información del usuario: Visualización de datos de sesión */
+.user-info {
+    background: #FBF9F8; /* Fondo neutro para diferenciar datos de acciones */
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 1px solid #F4F1EE;
+}
+
+.user-info p {
+    margin: 0;
+    color: #5D4037;
+    font-size: 0.95rem;
+}
+
+.user-info strong {
+    color: #8D6E63; /* Resalte de etiquetas clave */
+}
+
+/* ============================================================
+   BOTONES DE ACCIÓN PRINCIPALES
+   ============================================================ */
+
+/* Botón TIENDA: Primario (Solid) */
+.button-home {
+    margin-top: 10px;
+    padding: 14px;
+    background-color: #4A332D; 
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+}
+
+.button-home:hover {
+    background-color: #352521;
+}
+
+/* Botón CERRAR SESIÓN: Secundario (Ghost Button)*/
+.button-logout {
+    margin-top: 5px;
+    padding: 14px;
+    background-color: transparent;
+    color: #8D6E63; 
+    border: 1.5px solid #D7CCC8;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.button-logout:hover {
+    background-color: #FBF9F8;
+    color: #4A332D;
+    border-color: #8D6E63;
+    transform: translateY(-1px);
+}
+
+/* Adaptabilidad móvil: Colapso del grid a una sola columna */
+@media (max-width: 600px) {
+    .menu-opciones, 
+    .menu-admin {
+        grid-template-columns: 1fr;
+    }
+}

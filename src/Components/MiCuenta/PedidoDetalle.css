@@ -1,0 +1,176 @@
+/**
+ * Order Details View Styles
+ * Diseño tipo 'Factura/Ticket' para la visualización pormenorizada de una compra.
+ */
+
+/* 1. Contenedor principal: Efecto de papel elevado sobre fondo neutro */
+.detalle-container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(74, 51, 45, 0.1);
+}
+
+/* 2. Cabecera con navegación de retorno sutil */
+.detalle-header {
+    border-bottom: 2px solid #F4F1EE;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.btn-volver-atras {
+    background: none;
+    border: none;
+    color: #8D6E63;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 0;
+    margin-bottom: 15px;
+    transition: transform 0.2s, color 0.2s;
+}
+
+/* Micro-interacción: Indica dirección de salida al usuario */
+.btn-volver-atras:hover {
+    color: #4A332D;
+    transform: translateX(-5px);
+}
+
+.detalle-header h2 {
+    color: #4A332D;
+    font-size: 1.8rem;
+}
+
+.highlight {
+    color: #8D6E63; /* Color de acento para el ID del pedido */
+    font-weight: 300;
+}
+
+/* 3. Lista de Productos: Layout dinámico */
+.productos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/**
+ * PRODUCT CARD: Estructura de 3 columnas (Imagen | Título e Info | Precio)
+ * El uso de 'auto' al final asegura que el precio siempre esté alineado a la derecha.
+ */
+.producto-card {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    align-items: center;
+    padding: 20px;
+    background: #FBF9F8;
+    border-radius: 10px;
+    border: 1px solid #F4F1EE;
+    transition: box-shadow 0.3s ease;
+}
+
+.producto-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Imagen del producto: Contenedor con ratio cuadrado */
+.img-wrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    border: 1px solid #E0D7D5;
+}
+
+.prod-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Info central: Jerarquía tipográfica */
+.prod-info-principal {
+    padding-left: 20px;
+}
+
+.prod-info-principal h3 {
+    margin: 0 0 8px 0;
+    color: #4A332D;
+    font-size: 1.1rem;
+}
+
+.prod-meta {
+    margin: 2px 0;
+    color: #6D4C41;
+    font-size: 0.9rem;
+}
+
+/* Área de subtotal: Enfoque en la cifra económica */
+.prod-subtotal-area {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.label-subtotal {
+    font-size: 0.75rem;
+    color: #A1887F;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.subtotal-valor {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #4A332D;
+}
+
+/* 4. Footer y Resumen Económico*/
+.detalle-footer {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px dashed #D7CCC8;
+}
+
+.total-box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    gap: 20px;
+}
+
+.total-monto {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #4A332D;
+}
+
+/* Errores: Semántica visual de alerta */
+.error-msg {
+    color: #C0392B;
+    background: #FDEDEC;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/**
+ * RESPONSIVE: Adaptación para móviles
+ * De grid horizontal a flujo vertical centrado.
+ */
+@media (max-width: 600px) {
+    .producto-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 15px;
+    }
+    .img-wrapper { margin: 0 auto; }
+    .prod-info-principal { padding: 0; }
+    .prod-subtotal-area {
+        text-align: center;
+        border-top: 1px solid #E0D7D5;
+        padding-top: 10px;
+    }
+}

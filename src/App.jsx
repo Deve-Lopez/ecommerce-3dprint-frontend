@@ -12,7 +12,7 @@ import Footer from "./Components/Footer/Footer"
 import Carrito from "./Components/Carrito/Carrito"
 import AdminProductos from "./Components/Admin/AdminProductos"
 import AdminPedidos from "./Components/Admin/AdminPedidos"
-import AdminClientes from "./Components/Admin/Adminclientes"
+import AdminClientes from "./Components/Admin/AdminClientes"
 import AdminMensajes from "./Components/Admin/AdminMensajes"
 import {CarritoProvider} from "./Components/CarritoContext/CarritoContext";
 

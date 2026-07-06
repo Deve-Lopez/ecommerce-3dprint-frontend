@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './AdminMensajes.css';
 
 // URL del servidor donde tenemos los scripts PHP para la base de datos
-const BASE_URL_SERVER = "http://localhost/3dprint/server";
+const BASE_URL_SERVER = "https://3dprintbackend.infinityfreeapp.com/server";
 
 const AdminMensajes = () => {
     // Definimos los estados para la lista de mensajes, el buscador y el control de carga

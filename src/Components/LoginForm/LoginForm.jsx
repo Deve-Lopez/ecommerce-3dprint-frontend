@@ -29,7 +29,7 @@ const LoginForm = () => {
 
         try {
             /* Petición POST al endpoint de autenticación */
-            const response = await fetch('http://localhost/3dprint/server/login.php', {
+            const response = await fetch('https://3dprintbackend.infinityfreeapp.com/server/login.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, contrasena }),

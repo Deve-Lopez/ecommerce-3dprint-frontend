@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { CarritoContext } from '../../CarritoContext/CarritoContext';
 
 // URL estática para las imágenes servidas por el servidor local
-const BASE_IMAGEN_URL = "http://localhost/3dprint/images/";
+const BASE_IMAGEN_URL = "https://3dprintbackend.infinityfreeapp.com/images/";
 
 /**
  * CartStep - Primer paso del proceso de Checkout (Pasarela de pago)

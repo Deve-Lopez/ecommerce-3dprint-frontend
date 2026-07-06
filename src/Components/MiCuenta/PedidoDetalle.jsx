@@ -6,7 +6,7 @@ import './PedidoDetalle.css';
  * URL base para recursos estáticos.
  * Vincula la base de datos con la carpeta física de imágenes en el servidor.
  */
-const BASE_IMAGEN_URL = "http://localhost/3dprint/images/";
+const BASE_IMAGEN_URL = "https://3dprintbackend.infinityfreeapp.com/images/";
 
 const PedidoDetalle = () => {
     /* HOOKS DE NAVEGACIÓN Y PARÁMETROS */
@@ -25,7 +25,7 @@ const PedidoDetalle = () => {
          */
         const fetchDetalle = async () => {
             try {
-                const response = await fetch(`http://localhost/3dprint/server/get_detalle_pedido.php?pedido_id=${id}`);
+                const response = await fetch(`https://3dprintbackend.infinityfreeapp.com/server/get_detalle_pedido.php?pedido_id=${id}`);
                 
                 if (!response.ok) throw new Error("Error en la respuesta del servidor");
                 

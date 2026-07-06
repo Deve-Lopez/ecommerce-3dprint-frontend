@@ -31,7 +31,7 @@ const MisPedidos = () => {
         const fetchPedidos = async () => {
             try {
                 // FETCH DINÁMICO: Enviamos el usuario.id como Query Parameter.
-                const response = await fetch(`http://localhost/3dprint/server/get_pedidos_usuario.php?usuario_id=${usuario.id}`);
+                const response = await fetch(`https://3dprintbackend.infinityfreeapp.com/server/get_pedidos_usuario.php?usuario_id=${usuario.id}`);
                 const result = await response.json();
 
                 if (result.status === "success") {

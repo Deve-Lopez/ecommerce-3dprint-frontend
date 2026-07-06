@@ -53,7 +53,7 @@ const ProductList = () => {
           ? `&categorias=${encodeURIComponent(filtros.categorias.join(","))}` 
           : "";
         const searchQuery = busqueda ? `&q=${encodeURIComponent(busqueda)}` : "";
-        const url = `http://localhost/3dprint/server/get_product.php?page=${pagina}&limit=${limit}${catsQuery}&orden=${orden}${searchQuery}`;
+        const url = `https://3dprintbackend.infinityfreeapp.com/server/get_product.php?page=${pagina}&limit=${limit}${catsQuery}&orden=${orden}${searchQuery}`;
 
         const response = await fetch(url);
         if (!response.ok) throw new Error("Fallo en el servidor");

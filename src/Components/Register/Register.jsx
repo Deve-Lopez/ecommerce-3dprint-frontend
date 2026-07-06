@@ -55,7 +55,7 @@ const Register = () => {
              * Petición POST: Envío del payload serializado en formato JSON.
              * Especificamos el Content-Type para que el servidor PHP sepa cómo parsear los datos.
              */
-            const response = await fetch('http://localhost/3dprint/server/registro.php', {
+            const response = await fetch('https://3dprintbackend.infinityfreeapp.com/server/registro.php', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json'

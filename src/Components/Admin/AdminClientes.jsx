@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import "./AdminClientes.css";
 
 // URL base para las peticiones a los endpoints PHP del servidor
-const BASE_URL_SERVER = "http://localhost/3dprint/server";
+const BASE_URL_SERVER = "https://3dprintbackend.infinityfreeapp.com/server";
 
 const AdminClientes = () => {
   // Hooks para gestionar los parámetros de búsqueda en la URL

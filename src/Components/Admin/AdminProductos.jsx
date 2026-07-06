@@ -3,9 +3,8 @@ import { useSearchParams } from "react-router-dom";
 import "./AdminProductos.css";
 
 // Definimos las rutas del servidor para la API y para la carpeta donde se guardan las fotos
-const BASE_URL_SERVER = "http://localhost/3dprint/server";
-const BASE_IMAGEN_URL = "http://localhost/3dprint/images/";
-
+const BASE_URL_SERVER = "https://3dprintbackend.infinityfreeapp.com/server";
+const BASE_IMAGEN_URL = "https://3dprintbackend.infinityfreeapp.com/images/";
 const AdminProductos = () => {
   // Hooks para la gestión de la URL (buscador y paginación)
   const [searchParams, setSearchParams] = useSearchParams();

@@ -58,7 +58,7 @@ const Contacto = () => {
                   */}
                 <aside className='contact-visual-section'>
                     <img 
-                        src="http://localhost/3dprint/images/contacto.jpg" 
+                        src="https://3dprintbackend.infinityfreeapp.com/images/contacto.jpg" 
                         alt="3D Printing Workshop"
                         className='contact-image' 
                     />

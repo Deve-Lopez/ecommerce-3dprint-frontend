@@ -4,7 +4,7 @@ import { CarritoContext } from "../CarritoContext/CarritoContext";
 import "./DetailsProduct.css";
 
 /* Ruta absoluta para las imágenes servidas por el backend PHP */
-const BASE_IMAGEN_URL = "http://localhost/3dprint/images/";
+const BASE_IMAGEN_URL = "https://3dprintbackend.infinityfreeapp.com/images/";
 
 const DetailsProduct = () => {
     /* Extraemos el ID de la URL (ej: /producto/5) para la consulta a la BD */
@@ -45,7 +45,7 @@ const DetailsProduct = () => {
         const fetchProducto = async () => {
             setError(null);
             try {
-                const url = `http://localhost/3dprint/server/get_product_by_id.php?id=${id}`; 
+                const url = `https://3dprintbackend.infinityfreeapp.com/server/get_product_by_id.php?id=${id}`; 
                 const response = await fetch(url);
                 if (!response.ok) throw new Error("Error en la carga.");
                 

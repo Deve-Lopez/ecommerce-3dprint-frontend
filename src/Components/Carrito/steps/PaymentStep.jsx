@@ -45,7 +45,7 @@ const PaymentStep = ({ datosEnvio, onBack, onSuccess }) => {
 
     try {
       /* Realizamos la petición mediante Fetch API con cabeceras de tipo JSON */
-      const response = await fetch("http://localhost/3dprint/server/crear_pedido.php", {
+      const response = await fetch("https://3dprintbackend.infinityfreeapp.com/server/crear_pedido.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(pedidoCompleto)

@@ -43,7 +43,7 @@ function Formulario() {
 
     try {
       /* Petición POST asíncrona enviando el contenido en el Body como String JSON */
-      const response = await fetch('http://localhost/3dprint/server/guardar_mensaje.php', {
+      const response = await fetch('https://3dprintbackend.infinityfreeapp.com/server/guardar_mensaje.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

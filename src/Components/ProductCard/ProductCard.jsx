@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./ProductCard.css";
 
 // Configuración de assets estáticos vinculada al backend PHP
-const BASE_IMAGEN_URL = "http://localhost/3dprint/images/";
+const BASE_IMAGEN_URL = "https://3dprintbackend.infinityfreeapp.com/images/";
 
 const ProductCard = ({ producto, onImageClick, onAddToCart, carritoActual }) => {
 

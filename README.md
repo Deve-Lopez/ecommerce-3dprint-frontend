@@ -453,12 +453,6 @@ Vista general de la tienda y acceso al catálogo de productos.
 ![Página principal](docs/home.png)
 
 
-## 🛒 Catálogo de productos
-
-Listado dinámico con búsqueda, filtros, paginación y ordenación.
-
-![Catálogo](docs/productos.png)
-
 
 ## 🔎 Detalle de producto
 

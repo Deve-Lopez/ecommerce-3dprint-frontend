@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./AdminPedidos.css";
 
 // Definimos la ruta base para conectar con el backend de XAMPP
 const BASE_URL_SERVER = "https://3dprintbackend.infinityfreeapp.com/server";
 
 const AdminPedidos = () => {
+
+  // Hooks para gestionar los parámetros de búsqueda en la URL
+  const navigate = useNavigate();
+
   // Estados para manejar los datos de los pedidos, posibles errores y el estado de carga
   const [pedidos, setPedidos] = useState([]);
   const [error, setError] = useState(null);
@@ -15,7 +20,7 @@ const AdminPedidos = () => {
     try {
       const response = await fetch(`${BASE_URL_SERVER}/get_pedidos.php`);
       const result = await response.json();
-      
+
       if (result.status === "success") {
         setPedidos(result.data); // Cargamos los pedidos en el estado si la respuesta es correcta
       } else {
@@ -67,8 +72,17 @@ const AdminPedidos = () => {
 
   return (
     <div className="admin-clientes-container">
-      <h2>Historial de Ventas</h2>
-      
+      <div className="admin-header">
+        <button
+          className="btn-back"
+          onClick={() => navigate("/micuenta")}
+        >
+          ← Volver
+        </button>
+
+        <h2>Historial de Ventas</h2>
+      </div>
+
       {/* Contenedor responsive para que la tabla no se rompa en pantallas pequeñas */}
       <div className="table-responsive">
         <table className="admin-table">
@@ -108,7 +122,7 @@ const AdminPedidos = () => {
                 </td>
                 <td>
                   {/* Selector de estado: cambia de color dinámicamente mediante la clase CSS según su valor */}
-                  <select 
+                  <select
                     className={`select-estado ${pedido.estado.toLowerCase()}`}
                     value={pedido.estado}
                     onChange={(e) => actualizarEstado(pedido.id, e.target.value)}
@@ -119,7 +133,7 @@ const AdminPedidos = () => {
                     <option value="Cancelado">❌ Cancelado</option>
                   </select>
                 </td>
-                <td className="txt-main" style={{fontSize: '1.1rem'}}>
+                <td className="txt-main" style={{ fontSize: '1.1rem' }}>
                   {pedido.total_pedido}€
                 </td>
               </tr>

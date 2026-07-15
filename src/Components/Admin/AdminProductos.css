@@ -260,6 +260,23 @@
 
 .btn-save:hover { background: #8b6252; }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.pagination button {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.pagination span {
+    font-weight: bold;
+}
+
 /* Responsive: En móviles los inputs de las filas se apilan verticalmente */
 @media (max-width: 600px) {
     .form-row { flex-direction: column; }

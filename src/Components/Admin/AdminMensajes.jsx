@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AdminMensajes.css';
 
 // URL del servidor donde tenemos los scripts PHP para la base de datos
 const BASE_URL_SERVER = "https://3dprintbackend.infinityfreeapp.com/server";
 
 const AdminMensajes = () => {
+    const navigate = useNavigate();
     // Definimos los estados para la lista de mensajes, el buscador y el control de carga
     const [mensajes, setMensajes] = useState([]);
     const [busqueda, setBusqueda] = useState("");
     const [cargando, setCargando] = useState(true);
-    
+
     // Estado para controlar qué mensaje se muestra en la ventana modal al hacer clic en el ojo
     const [mensajeSeleccionado, setMensajeSeleccionado] = useState(null);
 
@@ -52,7 +54,7 @@ const AdminMensajes = () => {
             if (result.status === "success") {
                 // Actualización optimista: filtramos el array local para que el cambio sea instantáneo en pantalla
                 setMensajes(prev => prev.filter(m => m.id !== id));
-                
+
                 // Si justo tenemos abierto el modal del mensaje que acabamos de borrar, lo cerramos
                 if (mensajeSeleccionado?.id === id) {
                     setMensajeSeleccionado(null);
@@ -69,7 +71,7 @@ const AdminMensajes = () => {
     };
 
     // Lógica de filtrado en tiempo real: comparamos el texto del buscador con nombre, asunto o email
-    const mensajesFiltrados = mensajes.filter(m => 
+    const mensajesFiltrados = mensajes.filter(m =>
         m.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
         m.asunto.toLowerCase().includes(busqueda.toLowerCase()) ||
         m.email.toLowerCase().includes(busqueda.toLowerCase())
@@ -77,15 +79,21 @@ const AdminMensajes = () => {
 
     return (
         <div className="admin-clientes-container">
+            <button
+                className="btn-back"
+                onClick={() => navigate("/micuenta")}
+            >
+                ← Volver
+            </button>
             <h2>📬 Bandeja de Consultas</h2>
 
             {/* Barra superior: Input de búsqueda y contador dinámico de resultados */}
             <div className="admin-toolbar">
                 <div className="search-box">
                     <span className="search-icon">🔍</span>
-                    <input 
-                        type="text" 
-                        placeholder="Buscar por remitente, asunto o email..." 
+                    <input
+                        type="text"
+                        placeholder="Buscar por remitente, asunto o email..."
                         value={busqueda}
                         onChange={(e) => setBusqueda(e.target.value)}
                     />
@@ -109,9 +117,9 @@ const AdminMensajes = () => {
                     </thead>
                     <tbody>
                         {cargando ? (
-                            <tr><td colSpan="5" style={{textAlign: 'center', padding: '30px'}}>Cargando mensajes...</td></tr>
+                            <tr><td colSpan="5" style={{ textAlign: 'center', padding: '30px' }}>Cargando mensajes...</td></tr>
                         ) : mensajesFiltrados.length === 0 ? (
-                            <tr><td colSpan="5" style={{textAlign: 'center', padding: '30px'}}>No hay mensajes que coincidan con la búsqueda.</td></tr>
+                            <tr><td colSpan="5" style={{ textAlign: 'center', padding: '30px' }}>No hay mensajes que coincidan con la búsqueda.</td></tr>
                         ) : (
                             mensajesFiltrados.map((msg) => (
                                 <tr key={msg.id}>
@@ -122,7 +130,7 @@ const AdminMensajes = () => {
                                                 {new Date(msg.fecha_envio).toLocaleDateString()}
                                             </span>
                                             <span className="txt-sub">
-                                                {new Date(msg.fecha_envio).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                                                {new Date(msg.fecha_envio).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                             </span>
                                         </div>
                                     </td>
@@ -139,15 +147,15 @@ const AdminMensajes = () => {
                                         <p className="txt-sub-truncate">{msg.mensaje}</p>
                                     </td>
                                     <td className="actions-cell-end">
-                                        <button 
-                                            className="btn-edit-list" 
+                                        <button
+                                            className="btn-edit-list"
                                             title="Ver detalle"
                                             onClick={() => setMensajeSeleccionado(msg)}
                                         >
                                             👁️
                                         </button>
-                                        <button 
-                                            className="btn-delete-list" 
+                                        <button
+                                            className="btn-delete-list"
                                             title="Eliminar mensaje"
                                             onClick={() => eliminarMensaje(msg.id)}
                                         >
@@ -169,7 +177,7 @@ const AdminMensajes = () => {
                             <h3>Consulta: {mensajeSeleccionado.asunto}</h3>
                             <button className="btn-close-x" onClick={() => setMensajeSeleccionado(null)}>&times;</button>
                         </div>
-                        
+
                         <div className="form-section">
                             <h4>Datos de Contacto</h4>
                             <div className="form-row">
@@ -182,7 +190,7 @@ const AdminMensajes = () => {
                                     <span className="txt-main">{mensajeSeleccionado.telefono || 'No proporcionado'}</span>
                                 </div>
                             </div>
-                            <div className="form-row" style={{marginTop: '10px'}}>
+                            <div className="form-row" style={{ marginTop: '10px' }}>
                                 <div className="info-cell">
                                     <span className="txt-sub">Email</span>
                                     <span className="txt-main">{mensajeSeleccionado.email}</span>
@@ -194,9 +202,9 @@ const AdminMensajes = () => {
                             <h4>Mensaje</h4>
                             {/* Mostramos el cuerpo del mensaje respetando los saltos de línea originales */}
                             <div style={{
-                                padding: '15px', 
-                                background: '#fff', 
-                                border: '1px solid #D7CCC8', 
+                                padding: '15px',
+                                background: '#fff',
+                                border: '1px solid #D7CCC8',
                                 borderRadius: '8px',
                                 lineHeight: '1.6',
                                 color: '#4A332D',
@@ -212,10 +220,10 @@ const AdminMensajes = () => {
                                 Cerrar
                             </button>
                             {/* Enlace de tipo mailto para abrir el gestor de correo con el asunto ya puesto */}
-                            <a 
-                                href={`mailto:${mensajeSeleccionado.email}?subject=RE: ${mensajeSeleccionado.asunto}`} 
+                            <a
+                                href={`mailto:${mensajeSeleccionado.email}?subject=RE: ${mensajeSeleccionado.asunto}`}
                                 className="btn-save"
-                                style={{textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px'}}
+                                style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}
                             >
                                 📧 Responder por Email
                             </a>

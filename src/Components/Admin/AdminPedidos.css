@@ -66,3 +66,24 @@
 .prod-linea:last-child {
     border-bottom: none;
 }
+
+.admin-header{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.btn-back{
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #6c757d;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-back:hover{
+    background: #5a6268;
+}

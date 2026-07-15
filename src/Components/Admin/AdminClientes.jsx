@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import "./AdminClientes.css";
 
 // URL base para las peticiones a los endpoints PHP del servidor
@@ -8,22 +8,24 @@ const BASE_URL_SERVER = "https://3dprintbackend.infinityfreeapp.com/server";
 const AdminClientes = () => {
   // Hooks para gestionar los parámetros de búsqueda en la URL
   const [searchParams, setSearchParams] = useSearchParams();
-  
+  const navigate = useNavigate();
+
+
   // Estados para almacenar los datos que vienen de la base de datos
   const [usuarios, setUsuarios] = useState([]);
   const [roles, setRoles] = useState([]);
   const [cargando, setCargando] = useState(true);
-  
+
   // Estados para controlar la ventana modal y el objeto que estamos editando
   const [mostrarModal, setMostrarModal] = useState(false);
   const [clienteEditando, setClienteEditando] = useState(null);
 
   // Estado local para el input de búsqueda (para que la escritura sea fluida)
   const [textoBusqueda, setTextoBusqueda] = useState(searchParams.get("search") || "");
-  
+
   // Recuperamos la sesión actual del localStorage para validar acciones sobre nuestra propia cuenta
   const usuarioLogueado = JSON.parse(localStorage.getItem("usuario")) || {};
-  
+
   // Variable que extrae el término de búsqueda real de la URL
   const busquedaReal = searchParams.get("search") || "";
 
@@ -44,10 +46,10 @@ const AdminClientes = () => {
         fetch(`${BASE_URL_SERVER}/get_clientes.php?q=${encodeURIComponent(busquedaReal)}`),
         fetch(`${BASE_URL_SERVER}/get_roles.php`)
       ]);
-      
+
       const dataU = await resUsers.json();
       const dataR = await resRoles.json();
-      
+
       // Si el backend responde correctamente, actualizamos los estados correspondientes
       if (dataU.status === "success") setUsuarios(dataU.data);
       if (dataR.status === "success") setRoles(dataR.data);
@@ -85,7 +87,7 @@ const AdminClientes = () => {
         body: formData,
       });
       const data = await response.json();
-      
+
       if (data.status === "success") {
         alert("✅ Usuario actualizado correctamente");
         setMostrarModal(false);
@@ -101,11 +103,11 @@ const AdminClientes = () => {
   // Función para gestionar el borrado lógico o físico del cliente
   const eliminarCliente = async (id) => {
     if (!window.confirm("¿Confirmas que deseas eliminar este registro?")) return;
-    
+
     try {
       const response = await fetch(`${BASE_URL_SERVER}/delete_client.php?id=${id}`, { method: "POST" });
       const data = await response.json();
-      
+
       if (data.status === "success") {
         fetchData(); // Recargamos la tabla tras el borrado
         alert("✅ Usuario eliminado con éxito");
@@ -117,21 +119,28 @@ const AdminClientes = () => {
 
   return (
     <div className="admin-clientes-container">
+      <button
+        className="btn-back"
+        onClick={() => navigate("/micuenta")}
+      >
+        ← Volver
+      </button>
+
       <h2>Administración de Clientes</h2>
 
       {/* Toolbar: Contenedor para herramientas de filtrado y estadísticas */}
       <div className="admin-toolbar">
         <div className="search-box">
           <span className="search-icon">🔍</span>
-          <input 
-            type="text" 
-            placeholder="Buscar por nombre, email, ciudad o teléfono..." 
+          <input
+            type="text"
+            placeholder="Buscar por nombre, email, ciudad o teléfono..."
             value={textoBusqueda}
             onChange={(e) => setTextoBusqueda(e.target.value)}
           />
         </div>
         <div className="admin-stats-badge">
-            Total: <strong>{usuarios.length}</strong> Usuarios
+          Total: <strong>{usuarios.length}</strong> Usuarios
         </div>
       </div>
 
@@ -140,14 +149,14 @@ const AdminClientes = () => {
         <table className="admin-table">
           <thead>
             <tr>
-              <th style={{width: '50px'}}>ID</th>
+              <th style={{ width: '50px' }}>ID</th>
               <th>Nombre Completo</th>
               <th>Contacto</th>
               <th>Localización</th>
               <th>C.P.</th>
               <th>Rol Acceso</th>
               <th>Estado</th>
-              <th style={{textAlign: 'right'}}>Acciones</th>
+              <th style={{ textAlign: 'right' }}>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -158,7 +167,7 @@ const AdminClientes = () => {
                 <td>
                   <div className="info-cell">
                     <span className="txt-main">
-                        {u.nombre} {u.apellido} {u.id === usuarioLogueado.id && <strong className="self-tag">(Tú)</strong>}
+                      {u.nombre} {u.apellido} {u.id === usuarioLogueado.id && <strong className="self-tag">(Tú)</strong>}
                     </span>
                     <span className="txt-sub">Usuario registrado</span>
                   </div>
@@ -207,31 +216,31 @@ const AdminClientes = () => {
         <div className="modal-overlay">
           <div className="modal-content modal-large">
             <div className="modal-header">
-                <h3>Ficha Técnica del Usuario {clienteEditando.id === usuarioLogueado.id && "(Mi Perfil)"}</h3>
-                <button className="btn-close-x" onClick={() => setMostrarModal(false)}>&times;</button>
+              <h3>Ficha Técnica del Usuario {clienteEditando.id === usuarioLogueado.id && "(Mi Perfil)"}</h3>
+              <button className="btn-close-x" onClick={() => setMostrarModal(false)}>&times;</button>
             </div>
-            
+
             <form onSubmit={guardarCambios} className="admin-form">
               <div className="form-section">
                 <h4>🔑 Información de Cuenta</h4>
                 <div className="form-row">
-                    <div className="input-group">
-                        <label>Nombre</label>
-                        <input type="text" required value={clienteEditando.nombre}
-                        onChange={e => setClienteEditando({...clienteEditando, nombre: e.target.value})} />
-                    </div>
-                    <div className="input-group">
-                        <label>Apellido</label>
-                        <input type="text" required value={clienteEditando.apellido}
-                        onChange={e => setClienteEditando({...clienteEditando, apellido: e.target.value})} />
-                    </div>
+                  <div className="input-group">
+                    <label>Nombre</label>
+                    <input type="text" required value={clienteEditando.nombre}
+                      onChange={e => setClienteEditando({ ...clienteEditando, nombre: e.target.value })} />
+                  </div>
+                  <div className="input-group">
+                    <label>Apellido</label>
+                    <input type="text" required value={clienteEditando.apellido}
+                      onChange={e => setClienteEditando({ ...clienteEditando, apellido: e.target.value })} />
+                  </div>
                 </div>
                 <div className="form-row">
-                    <div className="input-group">
-                        <label>Email Corporativo</label>
-                        <input type="email" required value={clienteEditando.email}
-                        onChange={e => setClienteEditando({...clienteEditando, email: e.target.value})} />
-                    </div>
+                  <div className="input-group">
+                    <label>Email Corporativo</label>
+                    <input type="email" required value={clienteEditando.email}
+                      onChange={e => setClienteEditando({ ...clienteEditando, email: e.target.value })} />
+                  </div>
                 </div>
               </div>
 
@@ -239,37 +248,37 @@ const AdminClientes = () => {
               <div className="form-section">
                 <h4>🛡️ Seguridad y Permisos</h4>
                 <div className="form-row">
-                    <div className="input-group">
-                        <label>Asignar Rol</label>
-                        <select 
-                            value={clienteEditando.rol_id}
-                            /* Validación en el cliente: un admin no puede quitarse permisos a sí mismo */
-                            disabled={clienteEditando.id === usuarioLogueado.id}
-                            className={clienteEditando.id === usuarioLogueado.id ? "input-disabled" : ""}
-                            onChange={e => setClienteEditando({...clienteEditando, rol_id: e.target.value})}
-                        >
-                            {roles.map(r => <option key={r.id} value={r.id}>{r.nombre}</option>)}
-                        </select>
-                        {clienteEditando.id === usuarioLogueado.id && 
-                            <small className="msg-seguridad">* No puedes modificar tu rango jerárquico.</small>
-                        }
-                    </div>
-                    <div className="input-group">
-                      <label>Estado de Acceso</label>
-                      <select 
-                        value={clienteEditando.activo} 
-                        /* Evita que el usuario logueado bloquee su propio acceso al sistema */
-                        disabled={clienteEditando.id === usuarioLogueado.id}
-                        className={clienteEditando.id === usuarioLogueado.id ? "input-disabled" : ""}
-                        onChange={e => setClienteEditando({...clienteEditando, activo: parseInt(e.target.value)})}
-                      >
-                        <option value={1}>✅ Activo (Con acceso)</option>
-                        <option value={0}>🚫 Bloqueado (Sin acceso)</option>
-                      </select>
-                      {clienteEditando.id === usuarioLogueado.id && 
-                            <small className="msg-seguridad">* No puedes auto-bloquearte.</small>
-                      }
-                    </div>
+                  <div className="input-group">
+                    <label>Asignar Rol</label>
+                    <select
+                      value={clienteEditando.rol_id}
+                      /* Validación en el cliente: un admin no puede quitarse permisos a sí mismo */
+                      disabled={clienteEditando.id === usuarioLogueado.id}
+                      className={clienteEditando.id === usuarioLogueado.id ? "input-disabled" : ""}
+                      onChange={e => setClienteEditando({ ...clienteEditando, rol_id: e.target.value })}
+                    >
+                      {roles.map(r => <option key={r.id} value={r.id}>{r.nombre}</option>)}
+                    </select>
+                    {clienteEditando.id === usuarioLogueado.id &&
+                      <small className="msg-seguridad">* No puedes modificar tu rango jerárquico.</small>
+                    }
+                  </div>
+                  <div className="input-group">
+                    <label>Estado de Acceso</label>
+                    <select
+                      value={clienteEditando.activo}
+                      /* Evita que el usuario logueado bloquee su propio acceso al sistema */
+                      disabled={clienteEditando.id === usuarioLogueado.id}
+                      className={clienteEditando.id === usuarioLogueado.id ? "input-disabled" : ""}
+                      onChange={e => setClienteEditando({ ...clienteEditando, activo: parseInt(e.target.value) })}
+                    >
+                      <option value={1}>✅ Activo (Con acceso)</option>
+                      <option value={0}>🚫 Bloqueado (Sin acceso)</option>
+                    </select>
+                    {clienteEditando.id === usuarioLogueado.id &&
+                      <small className="msg-seguridad">* No puedes auto-bloquearte.</small>
+                    }
+                  </div>
                 </div>
               </div>
 
